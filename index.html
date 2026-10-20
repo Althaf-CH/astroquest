@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070b18">
+
+    <title>ASTROQUEST | Junior Astronaut Mission Trainer</title>
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body>
+    <div class="stars"></div>
+
+    <header class="navbar">
+        <a href="#" class="logo">ASTRO<span>QUEST</span></a>
+
+        <div class="navbar-actions">
+            <button id="soundToggle" class="sound-toggle" type="button" aria-pressed="true" aria-label="Turn sound off">🔊 SOUND ON</button>
+            <div class="status">
+                <span class="status-dot"></span>
+                MISSION SYSTEM ONLINE
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- LANDING PAGE -->
+        <section id="landingPage">
+            <section class="hero">
+                <div class="hero-content">
+                    <p class="eyebrow">JUNIOR ASTRONAUT TRAINING PROGRAM</p>
+
+                    <h1>
+                        YOUR MISSION.<br>
+                        <span>YOUR UNIVERSE.</span>
+                    </h1>
+
+                    <p class="description">
+                        Become an astronaut. Manage your resources.
+                        Make critical decisions. Your crew is counting on you.
+                    </p>
+
+                    <button id="startMission" class="primary-button">
+                        LAUNCH YOUR MISSION <span>→</span>
+                    </button>
+
+                    <p class="hint">
+                        EXPLORE. DECIDE. SURVIVE.
+                    </p>
+                </div>
+
+                <div class="planet-container">
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+                    <div class="planet"></div>
+                    <div class="moon"></div>
+                </div>
+            </section>
+
+            <section class="features">
+                <article class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3>EXPLORE</h3>
+                    <p>Choose a destination and prepare for the unknown.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>STRATEGIZE</h3>
+                    <p>Manage life-support resources and energy.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">🛰️</div>
+                    <h3>SURVIVE</h3>
+                    <p>Respond to emergencies and protect your crew.</p>
+                </article>
+            </section>
+
+            <section class="progress-section" aria-labelledby="progressTitle">
+                <div class="progress-heading">
+                    <p class="eyebrow">ASTRONAUT RECORD</p>
+                    <h2 id="progressTitle">YOUR FLIGHT RECORD</h2>
+                    <p class="progress-subtitle">Achievements and your best mission scores are saved on this device.</p>
+                </div>
+                <div class="progress-summary">
+                    <article class="progress-stat"><span>MISSIONS PLAYED</span><strong id="missionsPlayed">0</strong></article>
+                    <article class="progress-stat"><span>BEST SCORE</span><strong id="bestScore">—</strong></article>
+                    <article class="progress-stat"><span>BADGES UNLOCKED</span><strong id="badgesUnlocked">0 / 6</strong></article>
+                </div>
+                <div id="achievementGrid" class="achievement-grid"></div>
+                <div class="leaderboard-panel">
+                    <div><p class="eyebrow">HALL OF FAME</p><h3>TOP MISSION SCORES</h3></div>
+                    <ol id="highScoreList" class="high-score-list"><li>Complete a mission to set your first score.</li></ol>
+                </div>
+            </section>
+        </section>
+
+        <!-- DESTINATION SELECTION -->
+        <section id="missionSetup" class="mission-setup hidden">
+            <p class="eyebrow">MISSION CONFIGURATION</p>
+            <h2>CHOOSE YOUR DESTINATION</h2>
+
+            <p class="setup-description">
+                Every destination presents different challenges.
+                Where will your adventure begin?
+            </p>
+
+            <div class="destination-grid">
+                <button class="destination-card" data-destination="moon">
+                    <span class="destination-icon">🌙</span>
+                    <h3>MISSION LUNA</h3>
+                    <p>THE MOON</p>
+                    <span class="destination-action">SELECT DESTINATION →</span>
+                </button>
+
+                <button class="destination-card" data-destination="mars">
+                    <span class="destination-icon">🔴</span>
+                    <h3>MISSION ARES</h3>
+                    <p>MARS</p>
+                    <span class="destination-action">SELECT DESTINATION →</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- MISSION DASHBOARD -->
+        <section id="gameDashboard" class="game-section hidden">
+            <div class="dashboard-heading">
+                <div>
+                    <p class="eyebrow">LIVE MISSION OPERATIONS</p>
+                    <h2 id="destinationTitle">MISSION LUNA</h2>
+                    <p id="missionSubtitle" class="muted-text">
+                        Lunar research outpost
+                    </p>
+                </div>
+
+                <div class="mission-clock">
+                    <span>MISSION DAY</span>
+                    <strong id="missionDay">01 / 07</strong>
+                </div>
+            </div>
+
+            <div class="mission-progress-track">
+                <div id="missionProgress" class="mission-progress"></div>
+            </div>
+
+            <h3 class="section-title">OUTPOST TELEMETRY</h3>
+
+            <div class="resource-grid">
+                <article class="resource-card">
+                    <div class="resource-heading">
+                        <span>🫁 OXYGEN</span>
+                        <strong id="oxygenValue">100%</strong>
+                    </div>
+                    <div class="resource-track">
+                        <div id="oxygenBar" class="resource-fill oxygen-fill"></div>
+                    </div>
+                    <p>Breathable oxygen reserves</p>
+                </article>
+
+                <article class="resource-card">
+                    <div class="resource-heading">
+                        <span>💧 WATER</span>
+                        <strong id="waterValue">100%</strong>
+                    </div>
+                    <div class="resource-track">
+                        <div id="waterBar" class="resource-fill water-fill"></div>
+                    </div>
+                    <p>Available water supplies</p>
+                </article>
+
+                <article class="resource-card">
+                    <div class="resource-heading">
+                        <span>🍎 FOOD</span>
+                        <strong id="foodValue">100%</strong>
+                    </div>
+                    <div class="resource-track">
+                        <div id="foodBar" class="resource-fill food-fill"></div>
+                    </div>
+                    <p>Food reserves</p>
+                </article>
+
+                <article class="resource-card">
+                    <div class="resource-heading">
+                        <span>⚡ ENERGY</span>
+                        <strong id="energyValue">100%</strong>
+                    </div>
+                    <div class="resource-track">
+                        <div id="energyBar" class="resource-fill energy-fill"></div>
+                    </div>
+                    <p>Stored usable energy</p>
+                </article>
+
+                <article class="resource-card health-card">
+                    <div class="resource-heading">
+                        <span>❤️ CREW HEALTH</span>
+                        <strong id="healthValue">100%</strong>
+                    </div>
+                    <div class="resource-track">
+                        <div id="healthBar" class="resource-fill health-fill"></div>
+                    </div>
+                    <p>Overall crew condition</p>
+                </article>
+            </div>
+
+            <div class="event-layout">
+                <article class="event-panel">
+                    <p class="eyebrow">MISSION ALERT</p>
+
+                    <div id="eventIcon" class="event-icon">🛰️</div>
+
+                    <h3 id="eventTitle">Awaiting mission event</h3>
+
+                    <p id="eventDescription" class="event-description">
+                        Mission control is preparing your first operation.
+                    </p>
+
+                    <div id="eventScience" class="science-note">
+                        <strong>MISSION SCIENCE</strong>
+                        <p>Stay alert. Your decisions will affect the outpost.</p>
+                    </div>
+
+                    <div id="decisionButtons" class="decision-buttons">
+                        <button id="optionA" class="decision-button">
+                            OPTION A
+                        </button>
+
+                        <button id="optionB" class="decision-button">
+                            OPTION B
+                        </button>
+                    </div>
+
+                    <div id="decisionFeedback" class="decision-feedback hidden"
+                         aria-live="polite"></div>
+
+                    <button id="continueButton"
+                            class="primary-button hidden">
+                        CONTINUE MISSION →
+                    </button>
+                </article>
+
+                <aside class="log-panel">
+                    <p class="eyebrow">MISSION LOG</p>
+                    <h3>RECENT OPERATIONS</h3>
+
+                    <div id="missionLog" class="mission-log"
+                         aria-live="polite">
+                        <p class="log-entry">
+                            <span>01</span> Mission initialized.
+                        </p>
+                    </div>
+
+                    <div class="score-display">
+                        <span>MISSION SCORE</span>
+                        <strong id="missionScore">100</strong>
+                    </div>
+                </aside>
+            </div>
+
+            <button id="abandonMission" class="secondary-button">
+                END MISSION
+            </button>
+        </section>
+
+        <!-- FINAL REPORT -->
+        <section id="missionReport" class="report-section hidden">
+            <p class="eyebrow">MISSION DEBRIEFING</p>
+            <h2 id="reportTitle">MISSION COMPLETE</h2>
+
+            <p id="reportSummary" class="setup-description"></p>
+
+            <div class="report-score">
+                <span>FINAL MISSION SCORE</span>
+                <strong id="finalScore">0</strong>
+            </div>
+
+            <div id="reportStats" class="report-stats"></div>
+
+            <h3 class="section-title">WHAT YOU LEARNED</h3>
+
+            <div id="learningSummary" class="learning-summary"></div>
+
+            <button id="restartMission" class="primary-button">
+                START A NEW MISSION →
+            </button>
+        </section>
+
+        <footer>
+            <p>ASTROQUEST © 2026 · EXPLORE. DECIDE. SURVIVE.</p>
+            <p>AN EDUCATIONAL SPACE MISSION SIMULATOR</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
