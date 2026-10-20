@@ -43,7 +43,8 @@ Every decision matters. Can you become a successful astronaut?
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/YOUR-USERNAME/astroquest.git
+   git clone https://github.com/Althaf-CH/astroquest.git
+
    ```
 
 2. Open the project folder in Visual Studio Code.
